@@ -301,7 +301,8 @@
         item.addEventListener('submit', function (e) {
           e.preventDefault();
           let valid = formValidate.validate();
-          let result = item.querySelector('.form-result')
+        //   let result = item.querySelector('.form-result')
+         let result = item.querySelector('.form-result')
           if (valid) {
             let data = new FormData(item);
             const xhttp = new XMLHttpRequest();

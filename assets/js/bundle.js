@@ -44,9 +44,28 @@ return function(){function t(t,s){e.load(this,s,t),this.begin()}var s=t.prototyp
     typeof define === 'function' && define.amd ? define(factory) :
     (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.Pristine = factory());
 }(this, (function () { 'use strict';
-
-    var lang = {
-        en: {
+    var lang = {}
+    if(localStorage.getItem("language")&&localStorage.getItem("language") == 'zh-cn'){
+        lang = {
+             en: {
+            required: "此欄位為必填項",
+            email: "此欄位需要有效的電子郵件位址",
+            number: "此欄位需要一個數位",
+            integer: "此欄位需要整數值",
+            url: "此欄位需要有效的網站網址",
+            tel: "此欄位需要有效的電話號碼",
+            maxlength: "此欄位長度必須< ${1}",
+            minlength: "此欄位長度必須> ${1}",
+            min: "此欄位最小值為 ${1}",
+            max: "此欄位的最大值為 ${1}",
+            pattern: "請匹配要求的格式",
+            equals: "兩個字段不匹配",
+            default: "請輸入正確的值"
+        }
+        }
+    }else{
+        lang = {
+             en: {
             required: "This field is required",
             email: "This field requires a valid e-mail address",
             number: "This field requires a number",
@@ -61,7 +80,26 @@ return function(){function t(t,s){e.load(this,s,t),this.begin()}var s=t.prototyp
             equals: "The two fields do not match",
             default: "Please enter a correct value"
         }
-    };
+        }
+    }
+    
+    // var lang = {
+    //     en: {
+    //         required: "This field is required",
+    //         email: "This field requires a valid e-mail address",
+    //         number: "This field requires a number",
+    //         integer: "This field requires an integer value",
+    //         url: "This field requires a valid website URL",
+    //         tel: "This field requires a valid telephone number",
+    //         maxlength: "This fields length must be < ${1}",
+    //         minlength: "This fields length must be > ${1}",
+    //         min: "Minimum value for this field is ${1}",
+    //         max: "Maximum value for this field is ${1}",
+    //         pattern: "Please match the requested format",
+    //         equals: "The two fields do not match",
+    //         default: "Please enter a correct value"
+    //     }
+    // };
 
     function findAncestor(el, cls) {
         while ((el = el.parentElement) && !el.classList.contains(cls)) {}
